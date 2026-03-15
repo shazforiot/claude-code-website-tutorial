@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alex Mercer — Freelance Designer & Developer crafting bold digital experiences." />
+  <title>Alex Mercer — Designer & Developer</title>
+
+  <!-- Preload critical fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Critical inline CSS (nav + hero above fold) -->
+  <style>
+    /* Nav — critical above-fold */
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: padding 300ms ease, background 300ms ease, backdrop-filter 300ms ease;
+    }
+    #site-nav.scrolled {
+      padding: 12px 0;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1200px, 100%);
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .nav-logo span { color: #f5c518; }
+    #nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8892a4;
+      position: relative;
+      transition: color 300ms ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: #f5c518;
+      transition: width 300ms ease;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-cta {
+      padding: 8px 20px;
+      border: 1px solid #f5c518;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f5c518;
+      transition: background 300ms ease, color 300ms ease;
+    }
+    .nav-cta:hover { background: #f5c518; color: #000; }
+    #nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+    #nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 300ms ease, opacity 300ms ease, width 300ms ease;
+      transform-origin: left;
+    }
+    #nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(40deg) translateY(-2px); }
+    #nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+    #nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-40deg) translateY(2px); }
+
+    @media (max-width: 768px) {
+      #nav-toggle { display: flex; }
+      #nav-menu {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 14, 26, 0.97);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-16px);
+        transition: opacity 300ms ease, transform 300ms ease;
+      }
+      #nav-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .nav-link { font-size: 1.4rem; color: #fff; }
+      .nav-cta { font-size: 1rem; padding: 14px 40px; }
+    }
+
+    /* Hero skeleton to prevent layout shift */
+    #hero { min-height: 100svh; }
+  </style>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║             NAVIGATION              ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<header>
+  <nav id="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="Alex Mercer — Home">
+        Alex<span>.</span>
+      </a>
+
+      <button
+        id="nav-toggle"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul id="nav-menu" role="list">
+        <li><a href="./index.html"   class="nav-link">Home</a></li>
+        <li><a href="./about.html"   class="nav-link">About</a></li>
+        <li><a href="./work.html"    class="nav-link">Work</a></li>
+        <li><a href="./contact.html" class="nav-link nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║               HERO                  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="hero" aria-label="Hero section">
+  <!-- Ambient background elements -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-orb hero-orb--cyan"></div>
+    <div class="hero-orb hero-orb--violet"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="section-label hero-label">Available for projects</div>
+
+      <h1 class="hero-headline display-xl" aria-label="Crafting digital experiences that leave a mark">
+        <span class="line line-1">Crafting</span>
+        <span class="line line-2"><em>digital</em></span>
+        <span class="line line-3">experiences</span>
+        <span class="line line-4">that <span class="accent hero-typewriter" aria-live="polite"></span></span>
+      </h1>
+
+      <p class="hero-sub">
+        I'm <strong>Alex Mercer</strong> — a freelance designer &amp; developer
+        turning ideas into&nbsp;high-impact digital products. From concept to launch.
+      </p>
+
+      <div class="hero-actions">
+        <a href="./work.html" class="btn btn-primary">
+          View My Work
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="./about.html" class="btn btn-outline">About Me</a>
+      </div>
+
+      <div class="hero-stats" aria-label="Quick stats">
+        <div class="hero-stat">
+          <span class="hero-stat__num">50+</span>
+          <span class="hero-stat__lbl">Projects</span>
+        </div>
+        <div class="hero-stat-divider" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__num">8</span>
+          <span class="hero-stat__lbl">Years Exp.</span>
+        </div>
+        <div class="hero-stat-divider" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__num">40+</span>
+          <span class="hero-stat__lbl">Happy Clients</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero image -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-img-frame">
+        <img
+          src="https://picsum.photos/540/640?random=1"
+          alt="Alex Mercer — designer and developer"
+          class="hero-img"
+          loading="eager"
+          width="540"
+          height="640"
+        />
+        <div class="hero-img-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#f5c518"/>
+          </svg>
+          Top Rated
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint__line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║              SERVICES               ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="services" aria-labelledby="services-title">
+  <div class="services-bg-strip" aria-hidden="true"></div>
+  <div class="container services-container">
+    <div class="services-header">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title" id="services-title">
+        Services built for<br/><em>impact</em>
+      </h2>
+      <p class="section-subtitle">
+        End-to-end design and development — from wireframes to production-ready code,
+        I handle it all with obsessive attention to detail.
+      </p>
+    </div>
+
+    <div class="services-grid" role="list">
+
+      <article class="service-card" role="listitem" tabindex="0">
+        <div class="service-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="32" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M13 30v4M27 30v4M9 34h22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M11 18l4 4-4 4M18 22h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title">Web Development</h3>
+        <p class="service-card__desc">
+          Performant, accessible, standards-compliant sites and apps — built with clean HTML, CSS, and JavaScript. Zero bloat, maximum impact.
+        </p>
+        <a href="./work.html" class="service-card__link" aria-label="See web development projects">
+          See projects
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="service-card__glow" aria-hidden="true"></div>
+      </article>
+
+      <article class="service-card service-card--featured" role="listitem" tabindex="0">
+        <div class="service-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 10v10l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="20" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="service-card__badge">Most Popular</div>
+        <h3 class="service-card__title">UX / UI Design</h3>
+        <p class="service-card__desc">
+          Research-informed, pixel-perfect interfaces. I design systems that are both beautiful and effortlessly intuitive for your users.
+        </p>
+        <a href="./work.html" class="service-card__link" aria-label="See UX/UI design projects">
+          See projects
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="service-card__glow" aria-hidden="true"></div>
+      </article>
+
+      <article class="service-card" role="listitem" tabindex="0">
+        <div class="service-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 28L20 12l12 16H8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="30" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title">Brand Identity</h3>
+        <p class="service-card__desc">
+          Strategy-first brand identities: logos, color systems, type hierarchies, and guidelines that make your business unmistakable.
+        </p>
+        <a href="./work.html" class="service-card__link" aria-label="See brand identity projects">
+          See projects
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="service-card__glow" aria-hidden="true"></div>
+      </article>
+
+      <article class="service-card" role="listitem" tabindex="0">
+        <div class="service-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="12" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M13 12V9a3 3 0 016 0v3M21 12V9a3 3 0 016 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 22h12M14 26h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title">E-commerce</h3>
+        <p class="service-card__desc">
+          Conversion-optimised online stores that look stunning and sell. Custom-built checkouts, product pages, and admin experiences.
+        </p>
+        <a href="./work.html" class="service-card__link" aria-label="See e-commerce projects">
+          See projects
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="service-card__glow" aria-hidden="true"></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║            TESTIMONIALS             ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container testimonials-container">
+    <div class="testimonials-header">
+      <div class="section-label">Client Love</div>
+      <h2 class="section-title" id="testimonials-title">
+        What people are<br/><em>saying</em>
+      </h2>
+    </div>
+
+    <div class="carousel" aria-label="Client testimonials" role="region">
+      <div class="carousel-track" id="carouselTrack">
+
+        <article class="testimonial-card" aria-label="Testimonial from Sarah Chen">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+            ★★★★★
+          </div>
+          <blockquote class="testimonial-card__quote">
+            "Alex completely transformed our online presence. The site is lightning fast, visually stunning, and our conversions jumped 40% within the first month."
+          </blockquote>
+          <footer class="testimonial-card__author">
+            <img
+              src="https://picsum.photos/48/48?random=10"
+              alt="Sarah Chen"
+              class="testimonial-card__avatar"
+              width="48"
+              height="48"
+              loading="lazy"
+            />
+            <div>
+              <cite class="testimonial-card__name">Sarah Chen</cite>
+              <span class="testimonial-card__role">CEO, NovaTech</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="testimonial-card" aria-label="Testimonial from Marcus Williams">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+            ★★★★★
+          </div>
+          <blockquote class="testimonial-card__quote">
+            "Working with Alex was a game-changer. Incredible attention to detail, met every deadline, and the final product blew us all away. Already planning our next project together."
+          </blockquote>
+          <footer class="testimonial-card__author">
+            <img
+              src="https://picsum.photos/48/48?random=11"
+              alt="Marcus Williams"
+              class="testimonial-card__avatar"
+              width="48"
+              height="48"
+              loading="lazy"
+            />
+            <div>
+              <cite class="testimonial-card__name">Marcus Williams</cite>
+              <span class="testimonial-card__role">Founder, Luminary Labs</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="testimonial-card" aria-label="Testimonial from Priya Sharma">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+            ★★★★★
+          </div>
+          <blockquote class="testimonial-card__quote">
+            "The brand identity Alex created for us is absolutely perfect. It captures exactly who we are. Clients notice it immediately and we get compliments every single day."
+          </blockquote>
+          <footer class="testimonial-card__author">
+            <img
+              src="https://picsum.photos/48/48?random=12"
+              alt="Priya Sharma"
+              class="testimonial-card__avatar"
+              width="48"
+              height="48"
+              loading="lazy"
+            />
+            <div>
+              <cite class="testimonial-card__name">Priya Sharma</cite>
+              <span class="testimonial-card__role">Creative Director, Bloom Studio</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="testimonial-card" aria-label="Testimonial from Daniel Okafor">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
+            ★★★★★
+          </div>
+          <blockquote class="testimonial-card__quote">
+            "Our e-commerce store went from functional to genuinely beautiful. Alex has a rare ability to understand business goals and translate them into exceptional design."
+          </blockquote>
+          <footer class="testimonial-card__author">
+            <img
+              src="https://picsum.photos/48/48?random=13"
+              alt="Daniel Okafor"
+              class="testimonial-card__avatar"
+              width="48"
+              height="48"
+              loading="lazy"
+            />
+            <div>
+              <cite class="testimonial-card__name">Daniel Okafor</cite>
+              <span class="testimonial-card__role">Head of Product, Marka</span>
+            </div>
+          </footer>
+        </article>
+
+      </div><!-- /track -->
+
+      <div class="carousel-controls" aria-label="Carousel navigation">
+        <button class="carousel-btn" id="carouselPrev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Testimonial slides"></div>
+        <button class="carousel-btn" id="carouselNext" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║                CTA                  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<section id="cta" aria-labelledby="cta-title">
+  <div class="cta-bg" aria-hidden="true">
+    <div class="cta-orb cta-orb--1"></div>
+    <div class="cta-orb cta-orb--2"></div>
+  </div>
+  <div class="container cta-container">
+    <div class="cta-content">
+      <div class="section-label">Let's collaborate</div>
+      <h2 class="cta-headline" id="cta-title">
+        Ready to build something<br/><em>extraordinary?</em>
+      </h2>
+      <p class="cta-sub">
+        Whether you need a full product launch or a brand refresh —
+        let's talk about how I can help you get there.
+      </p>
+      <div class="cta-actions">
+        <a href="./contact.html" class="btn btn-primary btn-lg">
+          Start a Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="./work.html" class="btn btn-outline">Browse Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║               FOOTER                ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<footer id="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="./index.html" class="nav-logo" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;color:#fff;">
+        Alex<span style="color:#f5c518">.</span>
+      </a>
+      <p class="footer-tagline">Turning ideas into lasting digital&nbsp;impressions.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul role="list">
+        <li><a href="./index.html"   class="footer-link">Home</a></li>
+        <li><a href="./about.html"   class="footer-link">About</a></li>
+        <li><a href="./work.html"    class="footer-link">Work</a></li>
+        <li><a href="./contact.html" class="footer-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="social-link" aria-label="Dribbble profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M10.48 3.02c2.08 4.78 2.8 7.29 2.8 12.32"/><path d="M2.54 10.02c4.49 0 8.41-.31 11.2-2.52M3.96 16.52c4.14-.37 8.46-1.33 10.89-5.9M20.83 9.87c-3.35 3.04-7.37 4.27-10.29 4.13"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="GitHub profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="LinkedIn profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Twitter / X profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="year"></span> Alex Mercer. All rights reserved.</p>
+      <p>Designed &amp; built with care.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════ -->
+<!--              PAGE STYLES               -->
+<!-- ════════════════════════════════════════ -->
+<style>
+/* ─── Hero ────────────────────────────────── */
+#hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding-top: 100px;
+  padding-bottom: var(--space-12);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.hero-orb--cyan {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+}
+.hero-orb--violet {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(224,168,0,0.1) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+/* Staggered entry animations */
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-label    { animation-delay: 0.1s; }
+.hero-headline { animation-delay: 0.25s; }
+.hero-sub      { animation-delay: 0.4s; }
+.hero-actions  { animation-delay: 0.55s; }
+.hero-stats    { animation-delay: 0.7s; }
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-headline {
+  margin-bottom: var(--space-3);
+}
+.hero-headline .line {
+  display: block;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Typewriter cursor */
+.hero-typewriter::after {
+  content: '|';
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: var(--space-4);
+}
+.hero-sub strong { color: var(--text); font-weight: 600; }
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+.hero-stat__num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.hero-stat__lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.hero-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+/* Hero image */
+.hero-visual {
+  opacity: 0;
+  transform: scale(0.96) translateY(16px);
+  animation: heroImgReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+@keyframes heroImgReveal {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.hero-img-frame {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.hero-img-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(10,14,26,0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-img-frame::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid rgba(245,197,24,0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-card);
+}
+.hero-img-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10,14,26,0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(245,197,24,0.25);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: heroReveal 0.6s ease 1.2s forwards;
+}
+.scroll-hint__line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@keyframes scrollPulse {
+  0%,100% { transform: scaleY(1); opacity: 0.6; }
+  50%      { transform: scaleY(1.3); opacity: 1; }
+}
+
+/* ─── Services ─────────────────────────────── */
+#services {
+  padding: var(--space-12) 0;
+  position: relative;
+  background: var(--bg-alt);
+}
+.services-bg-strip {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  background: var(--bg);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+}
+
+.services-container {
+  padding-top: var(--space-6);
+}
+.services-header {
+  max-width: 560px;
+  margin-bottom: var(--space-8);
+}
+.services-header em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.service-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.service-card:hover,
+.service-card:focus {
+  transform: translateY(-6px);
+  border-color: rgba(245,197,24,0.4);
+  box-shadow: 0 12px 40px rgba(245,197,24,0.12);
+  outline: none;
+}
+.service-card--featured {
+  border-color: rgba(245,197,24,0.25);
+  background: linear-gradient(135deg, #1a1a1a 0%, #1f1a00 100%);
+}
+.service-card--featured:hover,
+.service-card--featured:focus {
+  border-color: var(--accent);
+  box-shadow: 0 12px 48px rgba(245,197,24,0.2);
+}
+
+.service-card__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(245,197,24,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.service-card:hover .service-card__glow { opacity: 1; }
+
+.service-card__badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 30px;
+  padding: 3px 10px;
+  margin-bottom: var(--space-2);
+}
+
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+.service-card--featured .service-card__icon { color: var(--accent); }
+.service-card__icon svg { width: 100%; height: 100%; }
+
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  color: var(--text);
+}
+.service-card__desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+.service-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: gap var(--transition);
+}
+.service-card__link:hover { gap: 10px; }
+
+/* ─── Testimonials ─────────────────────────── */
+#testimonials {
+  padding: var(--space-12) 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.testimonials-header {
+  margin-bottom: var(--space-8);
+}
+.testimonials-header em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.carousel {
+  position: relative;
+}
+.carousel-track {
+  display: grid;
+  grid-template-columns: repeat(4, 100%);
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.testimonial-card__stars {
+  color: #fbbf24;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.testimonial-card__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text);
+  flex: 1;
+}
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-avatar);
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+.testimonial-card__name {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.testimonial-card__role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.carousel-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+.carousel-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+.carousel-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ─── CTA ──────────────────────────────────── */
+#cta {
+  padding: var(--space-12) 0;
+  background: var(--bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+.cta-orb--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 70%);
+  top: -200px; left: -100px;
+}
+.cta-orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(224,168,0,0.1) 0%, transparent 70%);
+  bottom: -150px; right: -50px;
+}
+
+.cta-container {
+  position: relative;
+  z-index: 1;
+}
+.cta-content {
+  max-width: 680px;
+}
+.cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+}
+.cta-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.cta-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+}
+.cta-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.btn-lg {
+  padding: 18px 40px;
+  font-size: 1rem;
+}
+
+/* ─── Footer ───────────────────────────────── */
+#site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding-top: var(--space-8);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-8);
+  align-items: start;
+  padding-bottom: var(--space-6);
+}
+.footer-tagline {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  max-width: 220px;
+}
+.footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.footer-link {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+.footer-link:hover { color: var(--text); }
+.footer-social {
+  display: flex;
+  gap: var(--space-2);
+}
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.social-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: var(--space-3) 0;
+}
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ─── Scroll reveal ─────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ─── Responsive ────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-visual { order: -1; }
+  .hero-img { height: 380px; }
+  .hero-img-frame::before,
+  .hero-img-frame::after { border-radius: var(--radius-card); }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .section-subtitle { max-width: 100%; }
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  .footer-social { justify-content: center; }
+  .footer-nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero-img { height: 280px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .cta-actions { flex-direction: column; }
+  .cta-actions .btn { width: 100%; justify-content: center; }
+  .scroll-hint { display: none; }
+}
+
+@media (max-width: 320px) {
+  .hero-stats { flex-direction: column; align-items: center; }
+  .hero-stat-divider { width: 40px; height: 1px; }
+}
+</style>
+
+<!-- ════════════════════════════════════════ -->
+<!--              PAGE SCRIPTS              -->
+<!-- ════════════════════════════════════════ -->
+<script src="./nav.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Year ── */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ── Typewriter ── */
+  const typeEl = document.querySelector('.hero-typewriter');
+  if (typeEl) {
+    const words = ['resonates.', 'converts.', 'endures.', 'inspires.'];
+    let wi = 0, ci = 0, deleting = false;
+    const speed = { type: 90, delete: 55, pause: 1800 };
+
+    function tick() {
+      const word = words[wi];
+      if (!deleting) {
+        typeEl.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(tick, speed.pause); return; }
+      } else {
+        typeEl.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
+      }
+      setTimeout(tick, deleting ? speed.delete : speed.type);
+    }
+    setTimeout(tick, 1200);
+  }
+
+  /* ── Service card mouse glow ── */
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top)  / r.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+
+  /* ── Carousel ── */
+  const track   = document.getElementById('carouselTrack');
+  const dotsEl  = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+
+  if (track && dotsEl) {
+    const cards = track.querySelectorAll('.testimonial-card');
+    const count = cards.length;
+    let current = 0;
+    let autoTimer;
+
+    // Build dots
+    const dots = Array.from({ length: count }, (_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+      dot.setAttribute('aria-selected', String(i === 0));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+      return dot;
+    });
+
+    function goTo(idx) {
+      current = (idx + count) % count;
+      // Each card is 100% of the carousel wrapper width
+      track.style.transform = `translateX(calc(-${current} * 100% / ${count}))`;
+
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-selected', String(i === current));
+      });
+
+      clearTimeout(autoTimer);
+      autoTimer = setTimeout(advance, 4500);
+    }
+
+    function advance() { goTo(current + 1); }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+    });
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearTimeout(autoTimer));
+    track.addEventListener('mouseleave', () => { autoTimer = setTimeout(advance, 4500); });
+
+    // Initial slide width and resize
+    function initLayout() {
+      // Each card takes full track width (track = overflow container)
+      track.style.gridTemplateColumns = `repeat(${count}, 100%)`;
+      goTo(0);
+    }
+    initLayout();
+    window.addEventListener('resize', initLayout);
+
+    // Auto-start
+    autoTimer = setTimeout(advance, 4500);
+  }
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+})();
+</script>
+</body>
+</html>

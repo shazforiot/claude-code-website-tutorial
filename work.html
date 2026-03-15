@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alex Mercer — Portfolio of web, mobile, and brand design projects." />
+  <title>Work — Alex Mercer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Critical: Nav -->
+  <style>
+    #site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 20px 0;
+      transition: padding 300ms ease, background 300ms ease;
+    }
+    #site-nav.scrolled {
+      padding: 12px 0;
+      background: rgba(10, 14, 26, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: min(1200px, 100%); margin-inline: auto; padding-inline: 24px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: 1.4rem; letter-spacing: -0.02em; color: #fff;
+    }
+    .nav-logo span { color: #f5c518; }
+    #nav-menu { display: flex; align-items: center; gap: 40px; }
+    .nav-link {
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #8892a4;
+      position: relative; transition: color 300ms ease;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: #f5c518; transition: width 300ms ease;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-cta {
+      padding: 8px 20px; border: 1px solid #f5c518; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #f5c518;
+      transition: background 300ms ease, color 300ms ease;
+    }
+    .nav-cta:hover { background: #f5c518; color: #000; }
+    #nav-toggle {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 28px; height: 20px; cursor: pointer; border: none; background: none;
+    }
+    #nav-toggle span {
+      display: block; width: 100%; height: 2px; background: #fff;
+      border-radius: 2px; transition: transform 300ms ease, opacity 300ms ease, width 300ms ease;
+      transform-origin: left;
+    }
+    #nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(40deg) translateY(-2px); }
+    #nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+    #nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-40deg) translateY(2px); }
+    @media (max-width: 768px) {
+      #nav-toggle { display: flex; }
+      #nav-menu {
+        position: fixed; inset: 0; background: rgba(10,14,26,0.97);
+        backdrop-filter: blur(24px); flex-direction: column;
+        justify-content: center; gap: 40px;
+        opacity: 0; pointer-events: none; transform: translateY(-16px);
+        transition: opacity 300ms ease, transform 300ms ease;
+      }
+      #nav-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .nav-link { font-size: 1.4rem; color: #fff; }
+      .nav-cta { font-size: 1rem; padding: 14px 40px; }
+    }
+  </style>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════ -->
+<header>
+  <nav id="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="Alex Mercer — Home">Alex<span>.</span></a>
+      <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu" role="list">
+        <li><a href="./index.html"   class="nav-link">Home</a></li>
+        <li><a href="./about.html"   class="nav-link">About</a></li>
+        <li><a href="./work.html"    class="nav-link">Work</a></li>
+        <li><a href="./contact.html" class="nav-link nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ══ PAGE HERO ═════════════════════════════ -->
+<section id="work-hero" aria-label="Work page header">
+  <div class="work-hero-bg" aria-hidden="true">
+    <div class="work-orb work-orb--1"></div>
+    <div class="work-orb work-orb--2"></div>
+    <!-- Decorative grid lines -->
+    <div class="work-crosshair work-crosshair--tl" aria-hidden="true"></div>
+    <div class="work-crosshair work-crosshair--br" aria-hidden="true"></div>
+  </div>
+
+  <div class="container work-hero-inner">
+    <div class="work-hero-text">
+      <div class="section-label wh-l0">Selected Work</div>
+      <h1 class="work-hero-title">
+        <span class="wh-l1">Projects</span>
+        <span class="wh-l2">that <em>define</em></span>
+        <span class="wh-l3">the craft.</span>
+      </h1>
+      <p class="work-hero-sub wh-l4">
+        A curated selection of brand, web, and product design work — each one
+        built with obsessive attention to detail and a clear&nbsp;purpose.
+      </p>
+    </div>
+    <div class="work-hero-stats wh-l5" aria-label="Portfolio stats">
+      <div class="wh-stat">
+        <span class="wh-stat__n">50+</span>
+        <span class="wh-stat__l">Projects</span>
+      </div>
+      <div class="wh-stat-div" aria-hidden="true"></div>
+      <div class="wh-stat">
+        <span class="wh-stat__n">4</span>
+        <span class="wh-stat__l">Disciplines</span>
+      </div>
+      <div class="wh-stat-div" aria-hidden="true"></div>
+      <div class="wh-stat">
+        <span class="wh-stat__n">12</span>
+        <span class="wh-stat__l">Countries</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PORTFOLIO GRID ════════════════════════ -->
+<section id="portfolio" aria-labelledby="portfolio-title">
+  <div class="container portfolio-container">
+
+    <!-- Filter tabs -->
+    <div class="filter-bar" role="tablist" aria-label="Filter projects by category" id="filterBar">
+      <button
+        class="filter-tab active"
+        role="tab"
+        data-filter="all"
+        aria-selected="true"
+        aria-controls="portfolioGrid"
+      >All <span class="filter-count">12</span></button>
+      <button
+        class="filter-tab"
+        role="tab"
+        data-filter="web"
+        aria-selected="false"
+        aria-controls="portfolioGrid"
+      >Web <span class="filter-count">5</span></button>
+      <button
+        class="filter-tab"
+        role="tab"
+        data-filter="mobile"
+        aria-selected="false"
+        aria-controls="portfolioGrid"
+      >Mobile <span class="filter-count">3</span></button>
+      <button
+        class="filter-tab"
+        role="tab"
+        data-filter="brand"
+        aria-selected="false"
+        aria-controls="portfolioGrid"
+      >Brand <span class="filter-count">4</span></button>
+      <!-- Sliding indicator -->
+      <div class="filter-indicator" aria-hidden="true"></div>
+    </div>
+
+    <!-- Grid -->
+    <div
+      class="portfolio-grid"
+      id="portfolioGrid"
+      role="tabpanel"
+      aria-label="Portfolio projects"
+    >
+
+      <!-- Item 1 — web, wide -->
+      <article class="pf-card pf-card--wide" data-cat="web" data-index="0"
+        tabindex="0" role="button" aria-label="Open project: Luminary SaaS Platform">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/800/500?random=30" alt="Luminary SaaS Platform" class="pf-img" loading="lazy" width="800" height="500" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Web</span>
+              <h3 class="pf-title">Luminary SaaS Platform</h3>
+              <p class="pf-desc">Full product design &amp; frontend for a B2B analytics dashboard with real-time data viz.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Web</span>
+          <span class="pf-meta-year">2024</span>
+        </div>
+      </article>
+
+      <!-- Item 2 — brand -->
+      <article class="pf-card" data-cat="brand" data-index="1"
+        tabindex="0" role="button" aria-label="Open project: Bloom Studio Identity">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=31" alt="Bloom Studio Identity" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Brand</span>
+              <h3 class="pf-title">Bloom Studio Identity</h3>
+              <p class="pf-desc">Complete visual identity — logo, typography system, and brand guidelines for a creative studio.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Brand</span>
+          <span class="pf-meta-year">2024</span>
+        </div>
+      </article>
+
+      <!-- Item 3 — mobile -->
+      <article class="pf-card pf-card--tall" data-cat="mobile" data-index="2"
+        tabindex="0" role="button" aria-label="Open project: Pulse Fitness App">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/400/580?random=32" alt="Pulse Fitness App" class="pf-img" loading="lazy" width="400" height="580" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Mobile</span>
+              <h3 class="pf-title">Pulse Fitness App</h3>
+              <p class="pf-desc">iOS &amp; Android UI for a personalised fitness tracking app. 100k+ downloads at launch.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Mobile</span>
+          <span class="pf-meta-year">2023</span>
+        </div>
+      </article>
+
+      <!-- Item 4 — web -->
+      <article class="pf-card" data-cat="web" data-index="3"
+        tabindex="0" role="button" aria-label="Open project: Apex E-commerce">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=33" alt="Apex E-commerce" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Web</span>
+              <h3 class="pf-title">Apex E-commerce</h3>
+              <p class="pf-desc">High-conversion fashion storefront. Custom product configurator and AR try-on integration.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Web</span>
+          <span class="pf-meta-year">2023</span>
+        </div>
+      </article>
+
+      <!-- Item 5 — brand -->
+      <article class="pf-card pf-card--wide" data-cat="brand" data-index="4"
+        tabindex="0" role="button" aria-label="Open project: NovaTech Brand Refresh">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/800/440?random=34" alt="NovaTech Brand Refresh" class="pf-img" loading="lazy" width="800" height="440" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Brand</span>
+              <h3 class="pf-title">NovaTech Brand Refresh</h3>
+              <p class="pf-desc">Complete rebrand for a Series B tech company — strategy, visual identity, motion system, and product UI alignment.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Brand</span>
+          <span class="pf-meta-year">2023</span>
+        </div>
+      </article>
+
+      <!-- Item 6 — mobile -->
+      <article class="pf-card" data-cat="mobile" data-index="5"
+        tabindex="0" role="button" aria-label="Open project: Verdant Wallet">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=35" alt="Verdant Wallet" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Mobile</span>
+              <h3 class="pf-title">Verdant Wallet</h3>
+              <p class="pf-desc">Carbon-aware personal finance app. Designed the full product journey from onboarding to core features.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Mobile</span>
+          <span class="pf-meta-year">2022</span>
+        </div>
+      </article>
+
+      <!-- Item 7 — web -->
+      <article class="pf-card pf-card--tall" data-cat="web" data-index="6"
+        tabindex="0" role="button" aria-label="Open project: Meridian Portfolio">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/400/580?random=36" alt="Meridian Portfolio" class="pf-img" loading="lazy" width="400" height="580" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Web</span>
+              <h3 class="pf-title">Meridian Portfolio</h3>
+              <p class="pf-desc">Award-winning portfolio site for a photographer. Custom CMS, fullscreen gallery, and smooth page transitions.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Web</span>
+          <span class="pf-meta-year">2022</span>
+        </div>
+      </article>
+
+      <!-- Item 8 — brand -->
+      <article class="pf-card" data-cat="brand" data-index="7"
+        tabindex="0" role="button" aria-label="Open project: Marka Packaging">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=37" alt="Marka Packaging" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Brand</span>
+              <h3 class="pf-title">Marka Packaging</h3>
+              <p class="pf-desc">Luxury skincare packaging design and brand identity — premium feel, sustainable materials story.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Brand</span>
+          <span class="pf-meta-year">2022</span>
+        </div>
+      </article>
+
+      <!-- Item 9 — web -->
+      <article class="pf-card" data-cat="web" data-index="8"
+        tabindex="0" role="button" aria-label="Open project: Forge Agency Site">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=38" alt="Forge Agency Site" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Web</span>
+              <h3 class="pf-title">Forge Agency Site</h3>
+              <p class="pf-desc">Agency website with interactive case studies, 3D scroll animations, and a lead-gen contact flow.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Web</span>
+          <span class="pf-meta-year">2021</span>
+        </div>
+      </article>
+
+      <!-- Item 10 — mobile -->
+      <article class="pf-card pf-card--wide" data-cat="mobile" data-index="9"
+        tabindex="0" role="button" aria-label="Open project: Orbit Travel App">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/800/440?random=39" alt="Orbit Travel App" class="pf-img" loading="lazy" width="800" height="440" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Mobile</span>
+              <h3 class="pf-title">Orbit Travel App</h3>
+              <p class="pf-desc">AI-powered travel planner — Maps integration, itinerary builder, and a delight-first onboarding flow.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Mobile</span>
+          <span class="pf-meta-year">2021</span>
+        </div>
+      </article>
+
+      <!-- Item 11 — brand -->
+      <article class="pf-card" data-cat="brand" data-index="10"
+        tabindex="0" role="button" aria-label="Open project: Citrus Food Identity">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=40" alt="Citrus Food Identity" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Brand</span>
+              <h3 class="pf-title">Citrus Food Identity</h3>
+              <p class="pf-desc">Playful, bold brand identity for a DTC food startup — packaging, social assets, and campaign artwork.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Brand</span>
+          <span class="pf-meta-year">2020</span>
+        </div>
+      </article>
+
+      <!-- Item 12 — web -->
+      <article class="pf-card" data-cat="web" data-index="11"
+        tabindex="0" role="button" aria-label="Open project: Dusk News Platform">
+        <div class="pf-img-wrap">
+          <img src="https://picsum.photos/600/420?random=41" alt="Dusk News Platform" class="pf-img" loading="lazy" width="600" height="420" />
+          <div class="pf-overlay">
+            <div class="pf-overlay-content">
+              <span class="pf-cat-badge">Web</span>
+              <h3 class="pf-title">Dusk News Platform</h3>
+              <p class="pf-desc">Editorial news experience with dynamic reading modes, personalised feeds, and an accessible reading interface.</p>
+              <span class="pf-view-btn" aria-hidden="true">
+                View Project
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <span class="pf-meta-cat">Web</span>
+          <span class="pf-meta-year">2020</span>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+
+    <!-- Empty state (shown when filter has no results) -->
+    <div class="portfolio-empty" id="portfolioEmpty" aria-live="polite" hidden>
+      <p>No projects in this category yet.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ LIGHTBOX ══════════════════════════════ -->
+<div
+  id="lightbox"
+  class="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Project details"
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <button class="lightbox-close" id="lbClose" aria-label="Close project details">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- Nav arrows -->
+  <button class="lightbox-nav lightbox-nav--prev" id="lbPrev" aria-label="Previous project">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <button class="lightbox-nav lightbox-nav--next" id="lbNext" aria-label="Next project">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <div class="lightbox-backdrop" id="lbBackdrop"></div>
+
+  <div class="lightbox-panel">
+    <!-- Image pane -->
+    <div class="lb-image-pane">
+      <img id="lbImg" src="" alt="" class="lb-img" />
+      <div class="lb-img-counter" id="lbCounter" aria-live="polite"></div>
+    </div>
+
+    <!-- Details pane -->
+    <aside class="lb-details-pane">
+      <span class="lb-cat" id="lbCat"></span>
+      <h2 class="lb-title" id="lbTitle"></h2>
+      <p  class="lb-year"  id="lbYear"></p>
+      <p  class="lb-body"  id="lbBody"></p>
+
+      <div class="lb-tags" id="lbTags"></div>
+
+      <div class="lb-divider" aria-hidden="true"></div>
+
+      <a href="./contact.html" class="btn btn-primary lb-cta">
+        Start a Similar Project
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </aside>
+  </div><!-- /panel -->
+</div><!-- /lightbox -->
+
+<!-- ══ CTA STRIP ════════════════════════════ -->
+<section id="work-cta" aria-labelledby="work-cta-title">
+  <div class="work-cta-bg" aria-hidden="true">
+    <div class="wcta-orb wcta-orb--1"></div>
+    <div class="wcta-orb wcta-orb--2"></div>
+  </div>
+  <div class="container work-cta-inner">
+    <div>
+      <div class="section-label">Next Step</div>
+      <h2 class="work-cta-title" id="work-cta-title">
+        Like what you see?<br/><em>Let's talk.</em>
+      </h2>
+      <p class="work-cta-sub">Every great project starts with a conversation.</p>
+    </div>
+    <div class="work-cta-actions">
+      <a href="./contact.html" class="btn btn-primary btn-lg">
+        Start a Project
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="./about.html" class="btn btn-outline">About Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════ -->
+<footer id="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="./index.html" class="nav-logo" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;color:#fff;text-decoration:none;">
+        Alex<span style="color:#f5c518">.</span>
+      </a>
+      <p class="footer-tagline">Turning ideas into lasting digital&nbsp;impressions.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul role="list">
+        <li><a href="./index.html"   class="footer-link">Home</a></li>
+        <li><a href="./about.html"   class="footer-link">About</a></li>
+        <li><a href="./work.html"    class="footer-link">Work</a></li>
+        <li><a href="./contact.html" class="footer-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="social-link" aria-label="Dribbble profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M10.48 3.02c2.08 4.78 2.8 7.29 2.8 12.32"/><path d="M2.54 10.02c4.49 0 8.41-.31 11.2-2.52M3.96 16.52c4.14-.37 8.46-1.33 10.89-5.9M20.83 9.87c-3.35 3.04-7.37 4.27-10.29 4.13"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="GitHub profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="LinkedIn profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="year"></span> Alex Mercer. All rights reserved.</p>
+      <p>Designed &amp; built with care.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ PAGE STYLES ═══════════════════════════ -->
+<style>
+/* ─── Work Hero ───────────────────────────── */
+#work-hero {
+  position: relative;
+  padding: 160px 0 var(--space-12);
+  overflow: hidden;
+  background: var(--bg);
+}
+.work-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.work-orb {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+}
+.work-orb--1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(224,168,0,0.1) 0%, transparent 70%);
+  top: -250px; left: -200px;
+}
+.work-orb--2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+  bottom: 0; right: -100px;
+}
+/* Decorative cross-hairs */
+.work-crosshair {
+  position: absolute;
+  width: 40px; height: 40px;
+  opacity: 0.2;
+}
+.work-crosshair::before,
+.work-crosshair::after {
+  content: '';
+  position: absolute;
+  background: var(--accent);
+}
+.work-crosshair::before { width: 1px; height: 100%; left: 50%; }
+.work-crosshair::after  { width: 100%; height: 1px; top: 50%; }
+.work-crosshair--tl { top: 140px; left: 5%; }
+.work-crosshair--br { bottom: 60px; right: 8%; }
+
+.work-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Staggered hero text animation */
+.work-hero-title .wh-l1,
+.work-hero-title .wh-l2,
+.work-hero-title .wh-l3 { display: block; }
+
+.wh-l0, .wh-l1, .wh-l2, .wh-l3, .wh-l4, .wh-l5 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: wFadeUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.wh-l0 { animation-delay: 0.05s; }
+.wh-l1 { animation-delay: 0.15s; }
+.wh-l2 { animation-delay: 0.25s; }
+.wh-l3 { animation-delay: 0.35s; }
+.wh-l4 { animation-delay: 0.45s; }
+.wh-l5 { animation-delay: 0.6s; }
+@keyframes wFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.work-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.work-hero-title em { font-style: italic; color: var(--accent); }
+.work-hero-sub {
+  font-size: 1.05rem; color: var(--text-muted);
+  line-height: 1.75; max-width: 540px;
+}
+
+.work-hero-stats {
+  display: flex; align-items: center;
+  gap: var(--space-4);
+}
+.wh-stat { display: flex; flex-direction: column; }
+.wh-stat__n {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700; line-height: 1;
+}
+.wh-stat__l {
+  font-size: 0.72rem; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+}
+.wh-stat-div {
+  width: 1px; height: 36px; background: var(--border);
+}
+
+/* ─── Filter Bar ──────────────────────────── */
+#portfolio {
+  padding: var(--space-8) 0 var(--space-12);
+  background: var(--bg-alt);
+  position: relative;
+}
+#portfolio::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 80px;
+  background: var(--bg);
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+}
+
+.portfolio-container { padding-top: var(--space-4); }
+
+.filter-bar {
+  position: relative;
+  display: inline-flex;
+  gap: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: var(--space-6);
+}
+
+.filter-tab {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 20px;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.filter-tab:hover { color: var(--text); }
+.filter-tab.active { color: var(--bg); }
+.filter-tab:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 7px;
+}
+
+.filter-count {
+  font-size: 0.7em;
+  opacity: 0.6;
+}
+
+/* Sliding pill indicator */
+.filter-indicator {
+  position: absolute;
+  top: 4px; bottom: 4px;
+  border-radius: 7px;
+  background: var(--accent);
+  z-index: 0;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* ─── Portfolio Grid ──────────────────────── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 280px;
+  gap: var(--space-3);
+}
+
+.pf-card--wide { grid-column: span 2; }
+.pf-card--tall { grid-row:   span 2; }
+
+.pf-card {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  /* Filter animation support */
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color var(--transition);
+}
+.pf-card:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.pf-card.hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+/* When transitioning OUT before filter change */
+.pf-card.exiting {
+  opacity: 0;
+  transform: scale(0.9) translateY(8px);
+}
+
+.pf-img-wrap {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+.pf-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+.pf-card:hover .pf-img { transform: scale(1.06); }
+
+/* ── Hover Overlay ── */
+.pf-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,14,26,0.97) 0%,
+    rgba(10,14,26,0.7)  50%,
+    rgba(10,14,26,0.1)  100%
+  );
+  display: flex; align-items: flex-end;
+  padding: var(--space-3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.pf-card:hover .pf-overlay,
+.pf-card:focus-visible .pf-overlay { opacity: 1; }
+
+.pf-overlay-content {
+  transform: translateY(12px);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  width: 100%;
+}
+.pf-card:hover .pf-overlay-content,
+.pf-card:focus-visible .pf-overlay-content { transform: translateY(0); }
+
+.pf-cat-badge {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent);
+  border-radius: 20px; padding: 3px 10px;
+  margin-bottom: 8px;
+}
+
+.pf-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--text); line-height: 1.2;
+  margin-bottom: 6px;
+}
+.pf-card--wide  .pf-title { font-size: 1.4rem; }
+
+.pf-desc {
+  font-size: 0.8rem; color: rgba(255,255,255,0.7);
+  line-height: 1.5; margin-bottom: 12px;
+  /* Clamp to 2 lines on smaller cards */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pf-view-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+  transition: gap var(--transition);
+}
+.pf-card:hover .pf-view-btn { gap: 10px; }
+
+/* Bottom meta strip */
+.pf-meta {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px var(--space-2);
+  background: rgba(10,14,26,0.7);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.pf-card:hover .pf-meta { opacity: 0; }
+.pf-meta-cat { color: var(--accent); }
+.pf-meta-year { color: var(--text-muted); }
+
+/* Empty state */
+.portfolio-empty {
+  padding: var(--space-12) 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* ─── Lightbox ────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.lightbox.open {
+  opacity: 1; pointer-events: auto;
+}
+.lightbox:focus { outline: none; }
+
+.lightbox-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(5, 8, 18, 0.9);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  cursor: pointer;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px; z-index: 10;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(10,14,26,0.6);
+  color: var(--text);
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+.lightbox-close:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(245,197,24,0.08);
+}
+.lightbox-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.lightbox-nav {
+  position: absolute; top: 50%; z-index: 10;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  background: rgba(10,14,26,0.6);
+  color: var(--text);
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+.lightbox-nav--prev { left: 20px; }
+.lightbox-nav--next { right: 20px; }
+.lightbox-nav:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(245,197,24,0.08);
+}
+.lightbox-nav:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.lightbox-panel {
+  position: relative; z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  width: min(1100px, 94vw);
+  max-height: 88vh;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  /* Panel entrance */
+  transform: scale(0.94) translateY(16px);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.lightbox.open .lightbox-panel {
+  transform: scale(1) translateY(0);
+}
+
+/* Image pane */
+.lb-image-pane {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+.lb-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+.lb-img.loading { opacity: 0; }
+
+.lb-img-counter {
+  position: absolute;
+  bottom: 16px; left: 50%; transform: translateX(-50%);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: rgba(10,14,26,0.6);
+  padding: 4px 12px; border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+/* Details pane */
+.lb-details-pane {
+  padding: var(--space-6) var(--space-4);
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  background: var(--card-bg);
+  border-left: 1px solid var(--border);
+}
+.lb-details-pane::-webkit-scrollbar { width: 4px; }
+.lb-details-pane::-webkit-scrollbar-track { background: transparent; }
+.lb-details-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.lb-cat {
+  display: inline-block;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent);
+  border-radius: 20px; padding: 3px 10px;
+  width: fit-content;
+}
+.lb-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 700;
+  line-height: 1.15; color: var(--text);
+}
+.lb-year {
+  font-size: 0.78rem; color: var(--text-muted);
+  font-weight: 500; letter-spacing: 0.06em;
+}
+.lb-body {
+  font-size: 0.9rem; color: var(--text-muted);
+  line-height: 1.75; flex: 1;
+}
+.lb-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.lb-tag {
+  font-size: 0.72rem; font-weight: 500;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px; color: var(--text-muted);
+}
+.lb-divider {
+  height: 1px; background: var(--border);
+}
+.lb-cta {
+  align-self: flex-start;
+}
+
+/* ─── Work CTA ─────────────────────────────── */
+#work-cta {
+  padding: var(--space-12) 0;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.work-cta-bg { position: absolute; inset: 0; pointer-events: none; }
+.wcta-orb {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+}
+.wcta-orb--1 {
+  width: 500px; height: 400px;
+  background: radial-gradient(circle, rgba(245,197,24,0.1) 0%, transparent 70%);
+  top: -100px; right: -60px;
+}
+.wcta-orb--2 {
+  width: 350px; height: 300px;
+  background: radial-gradient(circle, rgba(224,168,0,0.08) 0%, transparent 70%);
+  bottom: -60px; left: 0;
+}
+.work-cta-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6); flex-wrap: wrap;
+}
+.work-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+.work-cta-title em { font-style: italic; color: var(--accent); }
+.work-cta-sub { font-size: 0.95rem; color: var(--text-muted); }
+.work-cta-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* ─── Footer (shared) ─────────────────────── */
+#site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg); padding-top: var(--space-8);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-8); align-items: start;
+  padding-bottom: var(--space-6);
+}
+.footer-tagline {
+  font-size: 0.875rem; color: var(--text-muted);
+  margin-top: var(--space-2); max-width: 220px;
+}
+.footer-nav ul { display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-link { font-size: 0.875rem; color: var(--text-muted); transition: color var(--transition); }
+.footer-link:hover { color: var(--text); }
+.footer-social { display: flex; gap: var(--space-2); }
+.social-link {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text-muted); transition: var(--transition);
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.footer-bottom { border-top: 1px solid var(--border); padding: var(--space-3) 0; }
+.footer-bottom-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem; color: var(--text-muted);
+}
+
+/* ─── Responsive ──────────────────────────── */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 260px;
+  }
+  .pf-card--wide { grid-column: span 2; }
+  .pf-card--tall { grid-row: span 2; }
+}
+
+@media (max-width: 900px) {
+  .lightbox-panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55% 1fr;
+    max-height: 92vh;
+  }
+  .lb-image-pane { min-height: 240px; }
+  .lb-details-pane { border-left: none; border-top: 1px solid var(--border); }
+  .lightbox-nav--prev { left: 12px; }
+  .lightbox-nav--next { right: 12px; }
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6); text-align: center;
+  }
+  .footer-social { justify-content: center; }
+  .footer-nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+  .work-cta-inner { flex-direction: column; text-align: center; }
+  .work-cta-actions { justify-content: center; }
+}
+
+@media (max-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+  .pf-card--wide { grid-column: span 1; }
+  .pf-card--tall { grid-row: span 1; }
+  .filter-bar { flex-wrap: wrap; }
+  .wh-stat-div:last-of-type { display: none; }
+  .wh-stat:last-child { display: none; }
+}
+
+@media (max-width: 480px) {
+  .lightbox-nav { display: none; }
+}
+</style>
+
+<!-- ══ SCRIPTS ════════════════════════════════ -->
+<script src="./nav.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Year ── */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ═══════════════════════════════════════════
+     PROJECT DATA
+     (mirrors what's in the HTML for the lightbox)
+  ═══════════════════════════════════════════ */
+  const projects = [
+    {
+      index: 0, cat: 'Web', year: '2024',
+      title: 'Luminary SaaS Platform',
+      img: 'https://picsum.photos/800/500?random=30',
+      body: 'Full product design and frontend development for a B2B analytics dashboard with real-time data visualisation. Responsible for design system, component library, and onboarding flow. Delivered in 10 weeks with a team of two engineers.',
+      tags: ['UI/UX', 'Frontend', 'Design System', 'Dashboard']
+    },
+    {
+      index: 1, cat: 'Brand', year: '2024',
+      title: 'Bloom Studio Identity',
+      img: 'https://picsum.photos/600/420?random=31',
+      body: 'Complete visual identity for a boutique creative studio — logo, typography system, colour palette, and a 40-page brand guidelines document. The identity has since appeared in three international design award shortlists.',
+      tags: ['Logo', 'Brand System', 'Typography', 'Print']
+    },
+    {
+      index: 2, cat: 'Mobile', year: '2023',
+      title: 'Pulse Fitness App',
+      img: 'https://picsum.photos/400/580?random=32',
+      body: 'End-to-end iOS and Android UI design for a personalised fitness tracking app. Covered onboarding, workout logging, progress analytics, and social features. Launched to 100k+ downloads in the first month.',
+      tags: ['iOS', 'Android', 'UX Research', 'Prototyping']
+    },
+    {
+      index: 3, cat: 'Web', year: '2023',
+      title: 'Apex E-commerce',
+      img: 'https://picsum.photos/600/420?random=33',
+      body: 'High-conversion fashion storefront with a custom product configurator and AR try-on integration. The redesign increased average order value by 28% and reduced bounce rate from the product page by 41%.',
+      tags: ['E-commerce', 'AR/UX', 'Conversion', 'Frontend']
+    },
+    {
+      index: 4, cat: 'Brand', year: '2023',
+      title: 'NovaTech Brand Refresh',
+      img: 'https://picsum.photos/800/440?random=34',
+      body: 'Complete rebrand for a Series B tech company — covering brand strategy, visual identity, a motion design system, and product UI alignment across five internal platforms. Rolled out to 200+ employees and six regional offices.',
+      tags: ['Strategy', 'Identity', 'Motion', 'Enterprise']
+    },
+    {
+      index: 5, cat: 'Mobile', year: '2022',
+      title: 'Verdant Wallet',
+      img: 'https://picsum.photos/600/420?random=35',
+      body: 'Carbon-aware personal finance app — designed the full product journey from zero-to-hero onboarding through to core budgeting and carbon offset features. Won a Webby Award for Best Finance App UX.',
+      tags: ['Fintech', 'Mobile UX', 'Onboarding', 'Data Viz']
+    },
+    {
+      index: 6, cat: 'Web', year: '2022',
+      title: 'Meridian Portfolio',
+      img: 'https://picsum.photos/400/580?random=36',
+      body: 'Award-winning portfolio site for a fine art photographer. Custom headless CMS, fullscreen gallery with EXIF data panels, and WebGL-powered page transitions. Named a Awwwards Site of the Day on launch.',
+      tags: ['Creative Dev', 'WebGL', 'CMS', 'Gallery']
+    },
+    {
+      index: 7, cat: 'Brand', year: '2022',
+      title: 'Marka Packaging',
+      img: 'https://picsum.photos/600/420?random=37',
+      body: 'Luxury skincare packaging design and full brand identity for a DTC startup. The brief was premium feel with a credible sustainability story — achieved through uncoated recycled board, minimal print, and a distinctive monogram mark.',
+      tags: ['Packaging', 'Luxury', 'Sustainable', 'Print']
+    },
+    {
+      index: 8, cat: 'Web', year: '2021',
+      title: 'Forge Agency Site',
+      img: 'https://picsum.photos/600/420?random=38',
+      body: 'Agency website with interactive case studies, scroll-driven 3D animations, and an integrated lead-generation contact flow. Built entirely in vanilla JS and CSS — no frameworks — and scores 98/100 on Lighthouse.',
+      tags: ['Vanilla JS', 'Animation', 'Lead Gen', 'Performance']
+    },
+    {
+      index: 9, cat: 'Mobile', year: '2021',
+      title: 'Orbit Travel App',
+      img: 'https://picsum.photos/800/440?random=39',
+      body: 'AI-powered travel planner with Maps integration, a multi-day itinerary builder, and a delight-first onboarding flow. Designed and prototyped in six weeks, with handoff to an engineering team of four across iOS and Android.',
+      tags: ['Travel', 'AI/UX', 'Maps', 'Interaction']
+    },
+    {
+      index: 10, cat: 'Brand', year: '2020',
+      title: 'Citrus Food Identity',
+      img: 'https://picsum.photos/600/420?random=40',
+      body: 'Playful, bold brand identity for a DTC food startup launching three condiment lines simultaneously. Delivered logo, packaging for 12 SKUs, social asset templates, and campaign artwork for a £250k crowdfunding launch.',
+      tags: ['FMCG', 'Packaging', 'Campaign', 'Crowdfunding']
+    },
+    {
+      index: 11, cat: 'Web', year: '2020',
+      title: 'Dusk News Platform',
+      img: 'https://picsum.photos/600/420?random=41',
+      body: 'Editorial news experience with dynamic reading modes, personalised feeds, and an accessible reading interface engineered for low-vision users. WCAG 2.1 AA compliant. Retained 3× longer than the legacy platform.',
+      tags: ['Editorial', 'Accessibility', 'Personalisation', 'WCAG']
+    }
+  ];
+
+  /* ═══════════════════════════════════════════
+     FILTER
+  ═══════════════════════════════════════════ */
+  const filterBar  = document.getElementById('filterBar');
+  const grid       = document.getElementById('portfolioGrid');
+  const emptyState = document.getElementById('portfolioEmpty');
+  const indicator  = filterBar?.querySelector('.filter-indicator');
+  const tabs       = filterBar ? [...filterBar.querySelectorAll('.filter-tab')] : [];
+  const cards      = grid ? [...grid.querySelectorAll('.pf-card')] : [];
+
+  let currentFilter = 'all';
+
+  function moveIndicator(tab) {
+    if (!indicator || !filterBar) return;
+    const barRect = filterBar.getBoundingClientRect();
+    const tabRect = tab.getBoundingClientRect();
+    indicator.style.left  = (tabRect.left - barRect.left - 4) + 'px';
+    indicator.style.width = tabRect.width + 'px';
+  }
+
+  function applyFilter(filter, activeTab) {
+    currentFilter = filter;
+
+    // Update tab states
+    tabs.forEach(t => {
+      const isActive = t === activeTab;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', String(isActive));
+    });
+    moveIndicator(activeTab);
+
+    // Determine which cards are visible
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const show = filter === 'all' || cat === filter;
+      if (show) {
+        visibleCount++;
+        card.classList.remove('hidden', 'exiting');
+      } else {
+        card.classList.add('exiting');
+        // After transition, apply hidden (removes from flow)
+        setTimeout(() => card.classList.add('hidden'), 320);
+      }
+    });
+
+    // Empty state
+    if (emptyState) {
+      emptyState.hidden = visibleCount > 0;
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      applyFilter(tab.dataset.filter, tab);
+    });
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const idx = tabs.indexOf(tab);
+        const next = tabs[(idx + dir + tabs.length) % tabs.length];
+        next?.focus();
+        next?.click();
+      }
+    });
+  });
+
+  // Init indicator position
+  if (tabs.length) {
+    requestAnimationFrame(() => {
+      // Small delay so layout is settled
+      setTimeout(() => moveIndicator(tabs[0]), 50);
+    });
+    window.addEventListener('resize', () => {
+      const activeTab = tabs.find(t => t.classList.contains('active'));
+      if (activeTab) moveIndicator(activeTab);
+    });
+  }
+
+  /* ═══════════════════════════════════════════
+     LIGHTBOX
+  ═══════════════════════════════════════════ */
+  const lightbox  = document.getElementById('lightbox');
+  const lbClose   = document.getElementById('lbClose');
+  const lbBackdrop= document.getElementById('lbBackdrop');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbCat     = document.getElementById('lbCat');
+  const lbTitle   = document.getElementById('lbTitle');
+  const lbYear    = document.getElementById('lbYear');
+  const lbBody    = document.getElementById('lbBody');
+  const lbTags    = document.getElementById('lbTags');
+
+  let currentProjectIndex = 0;
+  let lastFocusedEl = null;
+  let isLightboxOpen = false;
+
+  function getVisibleProjects() {
+    // Return projects that match the current filter
+    if (currentFilter === 'all') return projects;
+    return projects.filter(p => p.cat.toLowerCase() === currentFilter);
+  }
+
+  function populateLightbox(project, allVisible) {
+    // Image with loading fade
+    lbImg.classList.add('loading');
+    lbImg.src = project.img;
+    lbImg.alt = project.title;
+    lbImg.onload = () => lbImg.classList.remove('loading');
+
+    lbCat.textContent   = project.cat;
+    lbTitle.textContent = project.title;
+    lbYear.textContent  = `${project.year}`;
+    lbBody.textContent  = project.body;
+
+    // Tags
+    lbTags.innerHTML = project.tags
+      .map(t => `<span class="lb-tag">${t}</span>`)
+      .join('');
+
+    // Counter
+    const pos = allVisible.findIndex(p => p.index === project.index) + 1;
+    lbCounter.textContent = `${pos} / ${allVisible.length}`;
+
+    // Prev/next visibility
+    if (lbPrev) lbPrev.style.display = allVisible.length <= 1 ? 'none' : '';
+    if (lbNext) lbNext.style.display = allVisible.length <= 1 ? 'none' : '';
+  }
+
+  function openLightbox(projectIndex) {
+    const allVisible = getVisibleProjects();
+    const project = projects.find(p => p.index === projectIndex);
+    if (!project || !lightbox) return;
+
+    currentProjectIndex = allVisible.findIndex(p => p.index === projectIndex);
+    if (currentProjectIndex < 0) currentProjectIndex = 0;
+
+    populateLightbox(project, allVisible);
+
+    lastFocusedEl = document.activeElement;
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    isLightboxOpen = true;
+
+    // Focus the close button
+    requestAnimationFrame(() => lbClose?.focus());
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    isLightboxOpen = false;
+    lastFocusedEl?.focus();
+  }
+
+  function navigateLightbox(dir) {
+    const allVisible = getVisibleProjects();
+    if (allVisible.length <= 1) return;
+    currentProjectIndex = (currentProjectIndex + dir + allVisible.length) % allVisible.length;
+    populateLightbox(allVisible[currentProjectIndex], allVisible);
+  }
+
+  // Open on card click / enter/space
+  cards.forEach(card => {
+    card.addEventListener('click', () => openLightbox(parseInt(card.dataset.index)));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(parseInt(card.dataset.index));
+      }
+    });
+  });
+
+  lbClose?.addEventListener('click', closeLightbox);
+  lbBackdrop?.addEventListener('click', closeLightbox);
+  lbPrev?.addEventListener('click', () => navigateLightbox(-1));
+  lbNext?.addEventListener('click', () => navigateLightbox(1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!isLightboxOpen) return;
+    switch (e.key) {
+      case 'Escape':    closeLightbox(); break;
+      case 'ArrowLeft': navigateLightbox(-1); break;
+      case 'ArrowRight':navigateLightbox(1); break;
+    }
+  });
+
+  // Focus trap inside lightbox
+  lightbox?.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusable = [...lightbox.querySelectorAll(
+      'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+    )];
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last?.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first?.focus();
+    }
+  });
+
+  /* ── Touch swipe on lightbox ── */
+  let lbSwipeStartX = 0;
+  lightbox?.addEventListener('touchstart', e => {
+    lbSwipeStartX = e.touches[0].clientX;
+  }, { passive: true });
+  lightbox?.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lbSwipeStartX;
+    if (Math.abs(dx) > 50) navigateLightbox(dx < 0 ? 1 : -1);
+  });
+
+})();
+</script>
+</body>
+</html>

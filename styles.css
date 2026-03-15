@@ -1,0 +1,195 @@
+/* ============================================================
+   PORTFOLIO — Global Styles
+   Design: Dark Editorial Luxe
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── CSS Custom Properties ─────────────────────────────── */
+:root {
+  --bg:          #0a0a0a;
+  --bg-alt:      #111111;
+  --card-bg:     #1a1a1a;
+  --border:      #2a2a2a;
+  --accent:      #f5c518;
+  --accent-glow: rgba(245, 197, 24, 0.15);
+  --violet:      #e0a800;
+  --violet-glow: rgba(224, 168, 0, 0.15);
+  --text:        #ffffff;
+  --text-muted:  #8a8a8a;
+  --shadow:      0 4px 24px rgba(245, 197, 24, 0.1);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+
+  --radius-card:   12px;
+  --radius-btn:    6px;
+  --radius-avatar: 50%;
+
+  --transition: 300ms ease;
+}
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+img { display: block; max-width: 100%; }
+a  { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* ─── Typography ─────────────────────────────────────────── */
+h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.15; }
+
+.display-xl {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ─── Utilities ──────────────────────────────────────────── */
+.container {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+.accent       { color: var(--accent); }
+.violet       { color: var(--violet); }
+.muted        { color: var(--text-muted); }
+
+/* ─── Grain overlay ──────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+
+/* ─── Buttons ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 14px 32px;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245,197,24,0.35); }
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Focus states (accessibility) ──────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Section chrome ─────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ─── Diagonal divider ───────────────────────────────────── */
+.divider-skew {
+  height: 80px;
+  background: var(--bg-alt);
+  clip-path: polygon(0 0, 100% 40%, 100% 100%, 0 100%);
+}
+.divider-skew-rev {
+  height: 80px;
+  background: var(--bg);
+  clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+}

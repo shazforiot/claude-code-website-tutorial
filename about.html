@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alex Mercer — The story, skills, and career journey of a freelance designer and developer." />
+  <title>About — Alex Mercer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Critical: Nav (above fold) -->
+  <style>
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: padding 300ms ease, background 300ms ease;
+    }
+    #site-nav.scrolled {
+      padding: 12px 0;
+      background: rgba(10, 14, 26, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: min(1200px, 100%); margin-inline: auto; padding-inline: 24px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: 1.4rem; letter-spacing: -0.02em; color: #fff;
+    }
+    .nav-logo span { color: #f5c518; }
+    #nav-menu { display: flex; align-items: center; gap: 40px; }
+    .nav-link {
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #8892a4;
+      position: relative; transition: color 300ms ease;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: #f5c518; transition: width 300ms ease;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-cta {
+      padding: 8px 20px; border: 1px solid #f5c518; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #f5c518;
+      transition: background 300ms ease, color 300ms ease;
+    }
+    .nav-cta:hover { background: #f5c518; color: #000; }
+    #nav-toggle {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 28px; height: 20px; cursor: pointer; padding: 0; border: none; background: none;
+    }
+    #nav-toggle span {
+      display: block; width: 100%; height: 2px; background: #fff;
+      border-radius: 2px; transition: transform 300ms ease, opacity 300ms ease, width 300ms ease;
+      transform-origin: left;
+    }
+    #nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(40deg) translateY(-2px); }
+    #nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
+    #nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-40deg) translateY(2px); }
+    @media (max-width: 768px) {
+      #nav-toggle { display: flex; }
+      #nav-menu {
+        position: fixed; inset: 0; background: rgba(10,14,26,0.97);
+        backdrop-filter: blur(24px); flex-direction: column;
+        justify-content: center; gap: 40px;
+        opacity: 0; pointer-events: none; transform: translateY(-16px);
+        transition: opacity 300ms ease, transform 300ms ease;
+      }
+      #nav-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .nav-link { font-size: 1.4rem; color: #fff; }
+      .nav-cta { font-size: 1rem; padding: 14px 40px; }
+    }
+  </style>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════ -->
+<header>
+  <nav id="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="Alex Mercer — Home">Alex<span>.</span></a>
+      <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="nav-menu" role="list">
+        <li><a href="./index.html"   class="nav-link">Home</a></li>
+        <li><a href="./about.html"   class="nav-link">About</a></li>
+        <li><a href="./work.html"    class="nav-link">Work</a></li>
+        <li><a href="./contact.html" class="nav-link nav-cta">Hire Me</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ══ PAGE HERO (above fold) ═══════════════ -->
+<section id="about-hero" aria-label="About page header">
+  <div class="about-hero-bg" aria-hidden="true">
+    <div class="about-orb about-orb--1"></div>
+    <div class="about-orb about-orb--2"></div>
+    <!-- Horizontal rule lines for depth -->
+    <div class="about-scanlines"></div>
+  </div>
+  <div class="container about-hero-inner">
+    <div class="about-hero-text">
+      <div class="section-label page-label">The Person Behind the Work</div>
+      <h1 class="about-hero-title">
+        <span class="line ah-l1">Hello,</span>
+        <span class="line ah-l2">I'm <em>Alex.</em></span>
+      </h1>
+      <p class="about-hero-sub">
+        Designer. Developer. Obsessive typophile. I believe the best digital
+        work lives at the intersection of craft, clarity, and a little&nbsp;courage.
+      </p>
+    </div>
+    <div class="about-hero-image" aria-hidden="true">
+      <div class="portrait-frame">
+        <img
+          src="https://picsum.photos/520/620?random=20"
+          alt="Portrait of Alex Mercer"
+          class="portrait-img"
+          width="520" height="620"
+          loading="eager"
+        />
+        <div class="portrait-accent portrait-accent--tl" aria-hidden="true"></div>
+        <div class="portrait-accent portrait-accent--br" aria-hidden="true"></div>
+        <div class="portrait-label" aria-hidden="true">
+          <span>Est. 2016</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STORY ═════════════════════════════════ -->
+<section id="story" aria-labelledby="story-title">
+  <div class="container story-container">
+
+    <div class="story-eyebrow">
+      <div class="section-label">My Story</div>
+      <h2 class="section-title sr-only" id="story-title">My Story</h2>
+    </div>
+
+    <!-- Pull-quote floated right -->
+    <blockquote class="story-pullquote reveal" aria-label="Featured quote">
+      <p>"Great design isn't just how it looks — it's how it&nbsp;works, how it feels, and who it&nbsp;serves."</p>
+    </blockquote>
+
+    <div class="story-body reveal reveal-delay-1">
+      <p>
+        I grew up sketching logos in the margins of school notebooks — way before I knew what a
+        design system was. At seventeen I taught myself HTML from a library book, and something
+        clicked: here was a medium where visual thinking and logical precision could coexist
+        beautifully.
+      </p>
+      <p>
+        After studying Interaction Design at university, I spent three years inside a fast-paced
+        product agency, shipping work for startups and Fortune 500 companies alike. In 2019, I
+        took the leap to freelance — and never looked&nbsp;back.
+      </p>
+      <p>
+        Today I work with founders, creative directors, and growth teams who want their digital
+        presence to be <em>felt</em>, not just seen. My process is collaborative, my timelines
+        are tight, and my standards are&nbsp;non-negotiable.
+      </p>
+      <p>
+        When I'm not in Figma or a code editor, you'll find me in a specialty coffee shop,
+        hunting for obscure typefaces, or hiking somewhere with no phone&nbsp;signal.
+      </p>
+    </div>
+
+    <div class="story-values reveal reveal-delay-2" aria-label="Core values">
+      <div class="story-value">
+        <span class="story-value__icon" aria-hidden="true">◈</span>
+        <h3>Craft first</h3>
+        <p>Every pixel, every line of code earns its place.</p>
+      </div>
+      <div class="story-value">
+        <span class="story-value__icon" aria-hidden="true">◈</span>
+        <h3>Clarity always</h3>
+        <p>Complexity is the enemy. I simplify without dumbing down.</p>
+      </div>
+      <div class="story-value">
+        <span class="story-value__icon" aria-hidden="true">◈</span>
+        <h3>Partnership</h3>
+        <p>You're not a client, you're a collaborator. We build it together.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SKILLS ════════════════════════════════ -->
+<section id="skills" aria-labelledby="skills-title">
+  <div class="skills-bg" aria-hidden="true"></div>
+  <div class="container skills-container">
+
+    <div class="skills-header reveal">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title" id="skills-title">
+        Skills &amp; <em>Proficiency</em>
+      </h2>
+      <p class="section-subtitle">
+        Eight years of daily practice across design and engineering disciplines.
+        These are my core tools&nbsp;of&nbsp;trade.
+      </p>
+    </div>
+
+    <div class="skills-layout">
+
+      <!-- Design skills -->
+      <div class="skills-group reveal reveal-delay-1">
+        <h3 class="skills-group__title">Design</h3>
+        <ul class="skills-list" role="list" aria-label="Design skills">
+
+          <li class="skill-item" data-pct="96">
+            <div class="skill-meta">
+              <span class="skill-name">UI / UX Design</span>
+              <span class="skill-pct" aria-label="96 percent">96<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="UI/UX Design proficiency 96%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="90">
+            <div class="skill-meta">
+              <span class="skill-name">Brand Identity</span>
+              <span class="skill-pct" aria-label="90 percent">90<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Brand Identity proficiency 90%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="88">
+            <div class="skill-meta">
+              <span class="skill-name">Motion &amp; Animation</span>
+              <span class="skill-pct" aria-label="88 percent">88<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Motion and Animation proficiency 88%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="82">
+            <div class="skill-meta">
+              <span class="skill-name">Typography</span>
+              <span class="skill-pct" aria-label="82 percent">82<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Typography proficiency 82%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Dev skills -->
+      <div class="skills-group reveal reveal-delay-2">
+        <h3 class="skills-group__title">Development</h3>
+        <ul class="skills-list" role="list" aria-label="Development skills">
+
+          <li class="skill-item" data-pct="94">
+            <div class="skill-meta">
+              <span class="skill-name">HTML &amp; CSS</span>
+              <span class="skill-pct" aria-label="94 percent">94<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" aria-label="HTML and CSS proficiency 94%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="85">
+            <div class="skill-meta">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-pct" aria-label="85 percent">85<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript proficiency 85%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="78">
+            <div class="skill-meta">
+              <span class="skill-name">React &amp; Next.js</span>
+              <span class="skill-pct" aria-label="78 percent">78<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="React and Next.js proficiency 78%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+          <li class="skill-item" data-pct="72">
+            <div class="skill-meta">
+              <span class="skill-name">Node / Backend</span>
+              <span class="skill-pct" aria-label="72 percent">72<sup>%</sup></span>
+            </div>
+            <div class="skill-track" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="Node Backend proficiency 72%">
+              <div class="skill-fill"></div>
+              <div class="skill-glow"></div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Tools cloud -->
+      <div class="skills-tools reveal reveal-delay-3" aria-label="Tools I use">
+        <h3 class="skills-group__title">Tools</h3>
+        <ul class="tools-cloud" role="list">
+          <li class="tool-tag">Figma</li>
+          <li class="tool-tag">Framer</li>
+          <li class="tool-tag">VS Code</li>
+          <li class="tool-tag">Git</li>
+          <li class="tool-tag">Webflow</li>
+          <li class="tool-tag">Photoshop</li>
+          <li class="tool-tag">Illustrator</li>
+          <li class="tool-tag">Vercel</li>
+          <li class="tool-tag">Notion</li>
+          <li class="tool-tag">Linear</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TIMELINE ══════════════════════════════ -->
+<section id="timeline" aria-labelledby="timeline-title">
+  <div class="container timeline-container">
+
+    <div class="timeline-header reveal">
+      <div class="section-label">Career Journey</div>
+      <h2 class="section-title" id="timeline-title">
+        The road <em>so far</em>
+      </h2>
+      <p class="section-subtitle">
+        From sketchbooks to startups — a decade of learning, building, and shipping
+        work that&nbsp;matters.
+      </p>
+    </div>
+
+    <div class="timeline" role="list" aria-label="Career timeline">
+
+      <!-- 2016 -->
+      <div class="tl-item tl-item--right reveal" role="listitem">
+        <div class="tl-year-ghost" aria-hidden="true">2016</div>
+        <div class="tl-spine" aria-hidden="true">
+          <div class="tl-dot"></div>
+        </div>
+        <article class="tl-card">
+          <time class="tl-card__date" datetime="2016">2016</time>
+          <h3 class="tl-card__title">Interaction Design Degree</h3>
+          <p class="tl-card__org">University of the Arts London</p>
+          <p class="tl-card__body">
+            Graduated with First Class Honours. Thesis explored the emotional impact of
+            micro-interactions in mobile UX — shaped how I think about motion design to this day.
+          </p>
+          <span class="tl-card__tag">Education</span>
+        </article>
+      </div>
+
+      <!-- 2016–2018 -->
+      <div class="tl-item tl-item--left reveal" role="listitem">
+        <div class="tl-year-ghost" aria-hidden="true">2017</div>
+        <div class="tl-spine" aria-hidden="true">
+          <div class="tl-dot"></div>
+        </div>
+        <article class="tl-card">
+          <time class="tl-card__date" datetime="2016/2018">2016 – 2018</time>
+          <h3 class="tl-card__title">Junior Designer</h3>
+          <p class="tl-card__org">Forge Creative Agency, London</p>
+          <p class="tl-card__body">
+            Cut my teeth on fast-paced client work — brand identities, campaign microsites, and
+            the occasional all-nighter before a big pitch. Learned more in six months than four
+            years of&nbsp;university.
+          </p>
+          <span class="tl-card__tag">Agency</span>
+        </article>
+      </div>
+
+      <!-- 2018–2019 -->
+      <div class="tl-item tl-item--right reveal" role="listitem">
+        <div class="tl-year-ghost" aria-hidden="true">2018</div>
+        <div class="tl-spine" aria-hidden="true">
+          <div class="tl-dot"></div>
+        </div>
+        <article class="tl-card">
+          <time class="tl-card__date" datetime="2018/2019">2018 – 2019</time>
+          <h3 class="tl-card__title">Senior UI/UX Designer</h3>
+          <p class="tl-card__org">Apex Digital Studio, London</p>
+          <p class="tl-card__body">
+            Led design on three product launches, managing a team of two juniors. Introduced the
+            studio's first component-based design system, cutting production time by 35%.
+          </p>
+          <span class="tl-card__tag">Leadership</span>
+        </article>
+      </div>
+
+      <!-- 2019 – present -->
+      <div class="tl-item tl-item--left tl-item--current reveal" role="listitem">
+        <div class="tl-year-ghost" aria-hidden="true">2019</div>
+        <div class="tl-spine" aria-hidden="true">
+          <div class="tl-dot tl-dot--active"></div>
+        </div>
+        <article class="tl-card tl-card--current">
+          <time class="tl-card__date" datetime="2019">2019 – Present</time>
+          <h3 class="tl-card__title">Freelance Designer &amp; Developer</h3>
+          <p class="tl-card__org">Independent — Worldwide</p>
+          <p class="tl-card__body">
+            Running my own practice, working with founders, agencies, and creative teams across
+            twelve countries. 50+ projects shipped, 40+ long-term client relationships, and a
+            deep conviction that the best work is always&nbsp;collaborative.
+          </p>
+          <span class="tl-card__tag tl-card__tag--active">Now</span>
+        </article>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ══ CTA STRIP ════════════════════════════ -->
+<section id="about-cta" aria-labelledby="about-cta-title">
+  <div class="cta-strip-bg" aria-hidden="true">
+    <div class="cta-strip-orb cta-strip-orb--1"></div>
+    <div class="cta-strip-orb cta-strip-orb--2"></div>
+  </div>
+  <div class="container cta-strip-inner reveal">
+    <div>
+      <h2 class="cta-strip-title" id="about-cta-title">
+        Sounds like a fit?<br /><em>Let's make something.</em>
+      </h2>
+      <p class="cta-strip-sub">My calendar opens up periodically — reach out early.</p>
+    </div>
+    <div class="cta-strip-actions">
+      <a href="./contact.html" class="btn btn-primary btn-lg">
+        Get in Touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="./work.html" class="btn btn-outline">See My Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════ -->
+<footer id="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="./index.html" class="nav-logo" style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;color:#fff;text-decoration:none;">
+        Alex<span style="color:#f5c518">.</span>
+      </a>
+      <p class="footer-tagline">Turning ideas into lasting digital&nbsp;impressions.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <ul role="list">
+        <li><a href="./index.html"   class="footer-link">Home</a></li>
+        <li><a href="./about.html"   class="footer-link">About</a></li>
+        <li><a href="./work.html"    class="footer-link">Work</a></li>
+        <li><a href="./contact.html" class="footer-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="social-link" aria-label="Dribbble profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M10.48 3.02c2.08 4.78 2.8 7.29 2.8 12.32"/><path d="M2.54 10.02c4.49 0 8.41-.31 11.2-2.52M3.96 16.52c4.14-.37 8.46-1.33 10.89-5.9M20.83 9.87c-3.35 3.04-7.37 4.27-10.29 4.13"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="GitHub profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="LinkedIn profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="year"></span> Alex Mercer. All rights reserved.</p>
+      <p>Designed &amp; built with care.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ PAGE STYLES ═══════════════════════════ -->
+<style>
+/* ─── About Page Hero ─────────────────────── */
+#about-hero {
+  position: relative;
+  padding: 160px 0 var(--space-12);
+  overflow: hidden;
+  background: var(--bg);
+}
+.about-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+.about-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.about-orb--1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+  top: -250px; right: -200px;
+}
+.about-orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(224,168,0,0.09) 0%, transparent 70%);
+  bottom: -100px; left: -80px;
+}
+.about-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255,255,255,0.012) 3px,
+    rgba(255,255,255,0.012) 4px
+  );
+  pointer-events: none;
+}
+
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.page-label { margin-bottom: var(--space-3); }
+
+.about-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+}
+.about-hero-title .line { display: block; }
+.about-hero-title em {
+  font-style: italic;
+  color: var(--accent);
+  position: relative;
+}
+/* Underline decoration on the name */
+.about-hero-title em::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--violet));
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underlineReveal 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s forwards;
+}
+@keyframes underlineReveal { to { transform: scaleX(1); } }
+
+.about-hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 440px;
+}
+
+/* Staggered hero entry */
+.about-hero-text > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.page-label          { animation-delay: 0.1s; }
+.about-hero-title    { animation-delay: 0.25s; }
+.about-hero-sub      { animation-delay: 0.42s; }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Portrait */
+.about-hero-image {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+}
+.portrait-frame {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: visible;
+}
+.portrait-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-card);
+  display: block;
+  border: 1px solid var(--border);
+}
+/* Corner accents */
+.portrait-accent {
+  position: absolute;
+  width: 48px; height: 48px;
+  border-color: var(--accent);
+  border-style: solid;
+}
+.portrait-accent--tl {
+  top: -10px; left: -10px;
+  border-width: 2px 0 0 2px;
+  border-radius: 4px 0 0 0;
+}
+.portrait-accent--br {
+  bottom: -10px; right: -10px;
+  border-width: 0 2px 2px 0;
+  border-color: var(--violet);
+  border-radius: 0 0 4px 0;
+}
+.portrait-label {
+  position: absolute;
+  bottom: 20px; left: -18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+/* ─── Story Section ───────────────────────── */
+#story {
+  padding: var(--space-12) 0;
+  background: var(--bg-alt);
+  position: relative;
+}
+#story::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+.story-container { position: relative; }
+
+.story-eyebrow { margin-bottom: var(--space-6); }
+
+.story-pullquote {
+  float: right;
+  width: 320px;
+  margin: 0 0 var(--space-4) var(--space-6);
+  padding: var(--space-4);
+  border-left: 3px solid var(--accent);
+  background: rgba(245,197,24,0.04);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+.story-pullquote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.story-body {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  max-width: 680px;
+}
+.story-body p + p { margin-top: var(--space-3); }
+.story-body em { color: var(--accent); font-style: italic; }
+
+.story-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  clear: both;
+}
+.story-value {
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--card-bg);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.story-value:hover {
+  border-color: rgba(245,197,24,0.3);
+  transform: translateY(-4px);
+}
+.story-value__icon {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+.story-value h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.story-value p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Skills Section ──────────────────────── */
+#skills {
+  padding: var(--space-12) 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.skills-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(245,197,24,0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 60% at 20% 80%, rgba(224,168,0,0.05) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.skills-container { position: relative; z-index: 1; }
+
+.skills-header { margin-bottom: var(--space-8); }
+.skills-header em { font-style: italic; color: var(--accent); }
+
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-6) var(--space-8);
+}
+.skills-tools {
+  grid-column: 1 / -1;
+}
+
+.skills-group__title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-list { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.skill-item { position: relative; }
+.skill-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.skill-pct {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.skill-pct sup {
+  font-size: 0.6em;
+  font-family: var(--font-body);
+  font-weight: 500;
+  vertical-align: super;
+  color: var(--text-muted);
+}
+
+.skill-track {
+  position: relative;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.skill-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0; /* animated by JS */
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--accent));
+  transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: width;
+}
+
+/* Glow tip */
+.skill-glow {
+  position: absolute;
+  top: 50%; right: 0;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-50%) scale(0);
+  box-shadow: 0 0 12px 4px rgba(245,197,24,0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease 0.8s, transform 0.4s ease 0.8s;
+  pointer-events: none;
+}
+.skill-item.animated .skill-glow {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Tools cloud */
+.tools-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+}
+.tool-tag {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  transition: border-color var(--transition), color var(--transition), transform var(--transition);
+  cursor: default;
+  letter-spacing: 0.03em;
+}
+.tool-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ─── Timeline Section ────────────────────── */
+#timeline {
+  padding: var(--space-12) 0 var(--space-6);
+  background: var(--bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+#timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--violet), transparent);
+  opacity: 0.3;
+}
+
+.timeline-header { margin-bottom: var(--space-8); }
+.timeline-header em { font-style: italic; color: var(--accent); }
+
+/* Central spine */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 var(--space-8);
+}
+/* The vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border) 5%, var(--border) 95%, transparent);
+}
+
+.tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 0;
+  margin-bottom: var(--space-8);
+  align-items: start;
+}
+
+/* Ghost year behind card */
+.tl-year-ghost {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  top: -20px;
+}
+.tl-item--right .tl-year-ghost { right: calc(50% + 60px); text-align: right; }
+.tl-item--left  .tl-year-ghost { left: calc(50% + 60px); }
+
+/* Spine dot */
+.tl-spine {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+.tl-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 2px solid var(--border);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.tl-dot--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(245,197,24,0.2), 0 0 16px rgba(245,197,24,0.4);
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(245,197,24,0.2), 0 0 16px rgba(245,197,24,0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(245,197,24,0.1), 0 0 28px rgba(245,197,24,0.6); }
+}
+
+/* Card placement */
+.tl-item--right .tl-card { grid-column: 1; }
+.tl-item--right .tl-spine { grid-column: 2; }
+.tl-item--right .tl-year-ghost { grid-column: 1; }
+
+.tl-item--left .tl-card {
+  grid-column: 3;
+  grid-row: 1;
+}
+.tl-item--left .tl-spine {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tl-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.tl-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245,197,24,0.25);
+  box-shadow: var(--shadow);
+}
+.tl-card--current {
+  border-color: rgba(245,197,24,0.3);
+  background: linear-gradient(135deg, var(--card-bg) 0%, #1f1a00 100%);
+}
+
+/* Connector arrow from card to spine */
+.tl-item--right .tl-card::after {
+  content: '';
+  position: absolute;
+  right: -8px; top: 28px;
+  width: 8px; height: 1px;
+  background: var(--border);
+}
+.tl-item--left .tl-card::before {
+  content: '';
+  position: absolute;
+  left: -8px; top: 28px;
+  width: 8px; height: 1px;
+  background: var(--border);
+}
+
+.tl-card__date {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-1);
+}
+.tl-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.tl-card__org {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+  font-style: italic;
+}
+.tl-card__body {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-2);
+}
+.tl-card__tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.tl-card__tag--active {
+  color: var(--accent);
+  border-color: rgba(245,197,24,0.4);
+  background: rgba(245,197,24,0.06);
+}
+
+/* ─── CTA Strip ───────────────────────────── */
+#about-cta {
+  padding: var(--space-12) 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.cta-strip-bg { position: absolute; inset: 0; pointer-events: none; }
+.cta-strip-orb {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+}
+.cta-strip-orb--1 {
+  width: 500px; height: 400px;
+  background: radial-gradient(circle, rgba(245,197,24,0.1) 0%, transparent 70%);
+  top: -100px; left: -80px;
+}
+.cta-strip-orb--2 {
+  width: 400px; height: 300px;
+  background: radial-gradient(circle, rgba(224,168,0,0.09) 0%, transparent 70%);
+  bottom: -60px; right: 0;
+}
+.cta-strip-inner {
+  position: relative; z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.cta-strip-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+.cta-strip-title em { font-style: italic; color: var(--accent); }
+.cta-strip-sub { font-size: 0.95rem; color: var(--text-muted); }
+.cta-strip-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* ─── Footer (shared) ─────────────────────── */
+#site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding-top: var(--space-8);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-8);
+  align-items: start;
+  padding-bottom: var(--space-6);
+}
+.footer-tagline {
+  font-size: 0.875rem; color: var(--text-muted);
+  margin-top: var(--space-2); max-width: 220px;
+}
+.footer-nav ul { display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-link { font-size: 0.875rem; color: var(--text-muted); transition: color var(--transition); }
+.footer-link:hover { color: var(--text); }
+.footer-social { display: flex; gap: var(--space-2); }
+.social-link {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text-muted); transition: var(--transition);
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.footer-bottom { border-top: 1px solid var(--border); padding: var(--space-3) 0; }
+.footer-bottom-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem; color: var(--text-muted);
+}
+
+/* ─── Scroll Reveal ───────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ─── Responsive ──────────────────────────── */
+@media (max-width: 900px) {
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-hero-image { order: -1; }
+  .portrait-img { height: 360px; }
+  .portrait-label { display: none; }
+  .about-hero-sub { margin-inline: auto; }
+
+  .story-pullquote {
+    float: none;
+    width: 100%;
+    margin: 0 0 var(--space-4) 0;
+  }
+  .story-values { grid-template-columns: 1fr; }
+
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+  .skills-tools { grid-column: 1; }
+
+  /* Timeline: stack to single column */
+  .timeline::before { left: 20px; }
+  .tl-item {
+    grid-template-columns: 40px 1fr;
+    margin-bottom: var(--space-6);
+  }
+  .tl-item--right .tl-card,
+  .tl-item--left  .tl-card {
+    grid-column: 2; grid-row: 1;
+  }
+  .tl-item--right .tl-spine,
+  .tl-item--left  .tl-spine {
+    grid-column: 1; grid-row: 1;
+  }
+  .tl-spine { justify-content: center; }
+  .tl-year-ghost { display: none; }
+  .tl-item--right .tl-card::after,
+  .tl-item--left  .tl-card::before { display: none; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6); text-align: center;
+  }
+  .footer-social { justify-content: center; }
+  .footer-nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
+
+  .cta-strip-inner { flex-direction: column; text-align: center; }
+  .cta-strip-actions { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .portrait-img { height: 260px; }
+  .btn-lg { width: 100%; justify-content: center; }
+  .cta-strip-actions { flex-direction: column; }
+}
+</style>
+
+<!-- ══ NAV + PAGE SCRIPTS ════════════════════ -->
+<script src="./nav.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Year ── */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ── Skill bar animation on scroll ── */
+  const skillItems = document.querySelectorAll('.skill-item[data-pct]');
+
+  function animateSkill(item) {
+    if (item.classList.contains('animated')) return;
+    item.classList.add('animated');
+    const pct   = parseFloat(item.dataset.pct);
+    const fill  = item.querySelector('.skill-fill');
+    const glow  = item.querySelector('.skill-glow');
+    if (!fill) return;
+
+    // Set the fill width — CSS transition handles the animation
+    requestAnimationFrame(() => {
+      fill.style.width = pct + '%';
+      // Reposition glow tip to follow the fill end
+      if (glow) {
+        glow.style.left = pct + '%';
+        glow.style.right = 'auto';
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const skillObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // Stagger each bar slightly within the group
+          const siblings = e.target.closest('.skills-list')?.querySelectorAll('.skill-item');
+          const idx = siblings ? [...siblings].indexOf(e.target) : 0;
+          setTimeout(() => animateSkill(e.target), idx * 120);
+          skillObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    skillItems.forEach(item => skillObs.observe(item));
+  } else {
+    skillItems.forEach(animateSkill);
+  }
+
+  /* ── Scroll reveal (generic) ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revObs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── Timeline dot hover highlight ── */
+  document.querySelectorAll('.tl-item').forEach(item => {
+    const dot = item.querySelector('.tl-dot');
+    if (!dot) return;
+    item.addEventListener('mouseenter', () => {
+      if (!dot.classList.contains('tl-dot--active')) {
+        dot.style.borderColor = 'var(--accent)';
+        dot.style.boxShadow   = '0 0 0 3px rgba(245,197,24,0.15)';
+      }
+    });
+    item.addEventListener('mouseleave', () => {
+      if (!dot.classList.contains('tl-dot--active')) {
+        dot.style.borderColor = '';
+        dot.style.boxShadow   = '';
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

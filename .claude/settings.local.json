@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(head -40 grep -n \"00d4ff\\\\|0,212,255\\\\|7c3aed\\\\|124,58,237\" c:/Users/kabil/youtube-claude-code-websites/demo/my-portfolio/work.html)",
-      "Bash(head -40 grep -n \"00d4ff\\\\|0,212,255\\\\|7c3aed\\\\|124,58,237\" c:/Users/kabil/youtube-claude-code-websites/demo/my-portfolio/contact.html)"
-    ]
-  }
-}
